@@ -1,7 +1,6 @@
 var express = require('express');
 var http = require('http');
 var socketIo = require('socket.io');
-var Player = require('player');
 
 var app = express();
 
@@ -18,6 +17,13 @@ pulls   = {
 rounds = {
   red: 10,
   blue: 10
+}
+
+var Player = function (id) {
+  return {
+    id: id,
+    team: null
+  }
 }
 
 app.use(express.static('public'));
