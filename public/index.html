@@ -3,39 +3,11 @@
   <head>
     <title>Rope Pull</title>
 
-    <script src="/socket.io/socket.io.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/assets/javascripts/application.js"></script>
 
-    <style>
-      body {
-        padding: 0;
-        margin: 0;
-      }
-
-      #blue {
-        float: left;
-        height: 100%;
-        width: 50%;
-        background: blue;
-      }
-
-      #red {
-        float: left;
-        height: 100%;
-        width: 50%;
-        background: red;
-      }
-    </style>
-
-    <script>
-      var socket = io();
-
-      $(document).ready(function () {
-        $('#teams .team').on('click', function (event) {
-          socket.emit('select team', $(this).attr('id'));
-        });
-      });
-    </script>
+    <link rel="stylesheet" type="text/css" href="/assets/stylesheets/application.css">
   </head>
 
   <body>
