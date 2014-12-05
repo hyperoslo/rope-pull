@@ -43,18 +43,20 @@ io.on('connection', function (socket) {
     console.log('Player ' + player.id + ' pulled ' + color);
   });
 
-  setInterval(function () {
+  var loop = setInterval(function () {
     if (pulls.red > pulls.blue) {
       rounds.blue -= 1;
 
       if (rounds.blue <= 0) {
-        socket.emit('win', 'blue');
+        socket.emit('win', 'red');
+        clearInterval(loop);
       }
     } else if (pulls.blue > pulls.red) {
       rounds.red -= 1;
 
       if (rounds.red <= 0) {
-        socket.emit('win', 'red');
+        socket.emit('win', 'blue');
+        clearInterval(loop);
       }
     }
 
