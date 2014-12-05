@@ -3,6 +3,10 @@ body {
   margin: 0;
 }
 
+#teams .team {
+  transition: all 0.1s linear;
+}
+
 #blue {
   float: left;
   height: 100%;
