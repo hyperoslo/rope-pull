@@ -1,0 +1,23 @@
+{
+  "name": "rope-pull",
+  "version": "0.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "express": "^4.10.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:hyperoslo/rope-pull.git"
+  },
+  "author": "Sindre Moen <sindre@hyper.no>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hyperoslo/rope-pull/issues"
+  },
+  "homepage": "https://github.com/hyperoslo/rope-pull"
+}
