@@ -8,12 +8,23 @@ var app = express();
 var server = http.Server(app);
 var io = socketIo(server);
 
+INTERVAL = 100;
+
 players = []
+pulls   = {
+  red: 0,
+  blue: 0
+}
+rounds = {
+  red: 10,
+  blue: 10
+}
 
 app.use(express.static('public'));
 
 io.on('connection', function (socket) {
-  player = new Player(players.length + 1);
+  var player = new Player(players.length + 1);
+
   players.push(player);
 
   console.log('Player ' + player.id + ' connected');
@@ -27,10 +38,32 @@ io.on('connection', function (socket) {
     };
   });
 
-  socket.on('select team', function (color) {
-    player.team = color;
-    console.log('Player ' + player.id + ' selected the ' + color +' team');
+  socket.on('pull', function (color) {
+    pulls[color] += 1;
+    console.log('Player ' + player.id + ' pulled ' + color);
   });
+
+  setInterval(function () {
+    if (pulls.red > pulls.blue) {
+      rounds.blue -= 1;
+
+      if (rounds.blue <= 0) {
+        socket.emit('win', 'blue');
+      }
+    } else if (pulls.blue > pulls.red) {
+      rounds.red -= 1;
+
+      if (rounds.red <= 0) {
+        socket.emit('win', 'red');
+      }
+    }
+
+    socket.emit('update', rounds);
+
+    pulls.red = 0;
+    pulls.blue = 0;
+  }, INTERVAL);
+
 });
 
 server.listen(3000, function () {

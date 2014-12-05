@@ -7,12 +7,12 @@ body {
   float: left;
   height: 100%;
   width: 50%;
-  background: blue;
+  background: #5b90ab;
 }
 
 #red {
   float: left;
   height: 100%;
   width: 50%;
-  background: red;
+  background: #ab5b5b;
 }
