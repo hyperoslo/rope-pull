@@ -1,6 +1,7 @@
 body {
   padding: 0;
   margin: 0;
+  font-family: 'Open Sans'
 }
 
 #teams .team {
@@ -12,6 +13,7 @@ body {
   height: 100%;
   width: 50%;
   background: #5b90ab;
+  position: relative;
 }
 
 #red {
@@ -19,4 +21,48 @@ body {
   height: 100%;
   width: 50%;
   background: #ab5b5b;
+  position: relative;
+
+}
+
+#blue span,
+#red span {
+  font-size: 100px;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  text-align: center;
+  font-weight: 800;
+  width: 100%;
+  color: #fff;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+.victory {
+  position: absolute;
+  display: none;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  background: rgba(0,0,0,0.7);
+  z-index: 1;
+}
+
+.victory h1 {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  text-align: center;
+  color: #fff;
+  font-size: 100px;
+  text-transform: capitalize;
+  width: 100%;
+  margin: 0;
+}
+
 }

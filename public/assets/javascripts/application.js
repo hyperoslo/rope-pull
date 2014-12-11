@@ -1,7 +1,21 @@
 var socket = io();
 
-socket.on('win', function (color) {
-  alert(color);
+socket.on('win', function (color, score) {
+  $('#teams #red span').text(score.red)
+  $('#teams #blue span').text(score.blue)
+
+  $('#background h1').text(color + " won!")
+
+  $('#background').show();
+  $('.reset').show();
+  $('#background h1').addClass('animate');
+
+  confetti = new confetti.Context('background');
+  confetti.start();
+
+  $(window).resize(function(){
+    confetti.resize();
+  });
 });
 
 socket.on('update', function (rounds) {
