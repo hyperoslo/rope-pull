@@ -39,11 +39,19 @@ io.on('connection', function (socket) {
 
   socket.on('disconnect', function () {
     console.log('Player ' + player.id + ' disconnected');
+
     var index = players.indexOf(player);
 
     if(index > -1) {
       players.splice(index, 1);
     };
+  });
+
+  socket.on('reset', function () {
+    rounds = {
+      red: 10,
+      blue: 10
+    }
   });
 
   socket.on('pull', function (color) {
