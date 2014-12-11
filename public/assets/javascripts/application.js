@@ -33,6 +33,15 @@ socket.on('update', function (rounds) {
 $(document).ready(function () {
   FastClick.attach(document.body);
 
+  $('.reset').on('click', function (event) {
+    $('#background').hide();
+    $('#background h1').removeClass('animate');
+    confetti.stop();
+    $('#background').find('canvas').remove();
+
+    socket.emit('reset');
+  });
+
   $('#teams .team').on('click', function (event) {
     socket.emit('pull', $(this).attr('id'));
   });

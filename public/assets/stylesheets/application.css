@@ -65,4 +65,12 @@ body {
   margin: 0;
 }
 
+.reset {
+  right: 0px;
+  bottom: 0px;
+  display: none;
+  position: fixed;
+  width: 200px;
+  height: 200px;
+  z-index: 2;
 }

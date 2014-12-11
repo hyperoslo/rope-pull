@@ -9,22 +9,29 @@ var io = socketIo(server);
 
 INTERVAL = 100;
 
-players = []
-pulls   = {
+players = [];
+
+var pulls   = {
   red: 0,
   blue: 0
-}
+};
+
+var score   = {
+  red: 0,
+  blue: 0
+};
+
 rounds = {
   red: 10,
   blue: 10
-}
+};
 
 var Player = function (id) {
   return {
     id: id,
     team: null
   }
-}
+};
 
 app.use(express.static('public'));
 
@@ -42,6 +49,13 @@ io.on('connection', function (socket) {
     if(index > -1) {
       players.splice(index, 1);
     };
+  });
+
+  socket.on('reset', function() {
+    pulls.red = 0
+    polls.blue = 0
+    rounds.red = 10
+    rounds.blue = 10
   });
 
   socket.on('pull', function (color) {
