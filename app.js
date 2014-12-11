@@ -7,6 +7,8 @@ var app = express();
 var server = http.Server(app);
 var io = socketIo(server);
 
+var port = process.argv[2] || 3000
+
 INTERVAL = 100;
 
 players = []
@@ -74,6 +76,6 @@ io.on('connection', function (socket) {
 
 });
 
-server.listen(3000, function () {
-  console.log('Express server started on port 3000');
+server.listen(port, function () {
+  console.log('Express server started on port ' + port);
 });
