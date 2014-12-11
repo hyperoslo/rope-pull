@@ -12,8 +12,6 @@ socket.on('update', function (rounds) {
 
   $('#teams #red').css('width', redPercent + '%')
   $('#teams #blue').css('width', bluePercent + '%')
-
-  console.log(rounds);
 });
 
 $(document).ready(function () {
