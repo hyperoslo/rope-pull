@@ -65,14 +65,12 @@ io.on('connection', function (socket) {
 
       if (rounds.blue <= 0) {
         socket.emit('win', 'red');
-        clearInterval(loop);
       }
     } else if (pulls.blue > pulls.red) {
       rounds.red -= 1;
 
       if (rounds.red <= 0) {
         socket.emit('win', 'blue');
-        clearInterval(loop);
       }
     }
 
