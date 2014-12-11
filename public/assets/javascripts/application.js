@@ -1,7 +1,7 @@
 var socket = io();
 
 socket.on('win', function (color) {
-  alert(color);
+  alert(color + " wins!");
 });
 
 socket.on('update', function (rounds) {
