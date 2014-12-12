@@ -67,7 +67,7 @@ io.on('connection', function (socket) {
     if (pulls.red > pulls.blue) {
       rounds.blue -= 1;
 
-      if (rounds.blue <= 0) {
+      if (rounds.blue < 1) {
         score.red += 1;
         socket.emit('win', 'red', score);
         clearInterval(loop);
@@ -75,7 +75,7 @@ io.on('connection', function (socket) {
     } else if (pulls.blue > pulls.red) {
       rounds.red -= 1;
 
-      if (rounds.red <= 0) {
+      if (rounds.red < 1) {
         score.blue += 1;
         socket.emit('win', 'blue', score);
         clearInterval(loop);
