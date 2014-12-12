@@ -30,18 +30,19 @@ socket.on('update', function (rounds) {
   $('#teams #blue').css('width', bluePercent + '%')
 });
 
+socket.on('cleanup', function() {
+  $('#background').hide();
+  $('#background h1').removeClass('animate');
+  confetti.stop();
+  $('#background').find('canvas').remove();
+  $('.reset').hide();
+});
+
 $(document).ready(function () {
   FastClick.attach(document.body);
 
   $('.reset').on('click', function (event) {
-    $('#background').hide();
-    $('#background h1').removeClass('animate');
-    confetti.stop();
-    $('#background').find('canvas').remove();
-
     socket.emit('reset');
-
-    $(this).hide();
   });
 
   $('#teams .team').on('click', function (event) {

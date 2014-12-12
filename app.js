@@ -57,10 +57,11 @@ io.on('connection', function (socket) {
   socket.on('reset', function() {
     pulls.red = 0
     pulls.blue = 0
-    rounds.red = 10
-    rounds.blue = 10
+    rounds.red = 100
+    rounds.blue = 100
 
     interval = setInterval(loop, INTERVAL);
+    socket.emit('cleanup');
   });
 
   socket.on('pull', function (color) {
