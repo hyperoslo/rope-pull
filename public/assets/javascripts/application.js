@@ -1,6 +1,8 @@
 var socket = io();
 
 socket.on('win', function (color, score) {
+  console.log(color + " wins!");
+
   $('#teams #red span').text(score.red)
   $('#teams #blue span').text(score.blue)
 
@@ -26,8 +28,6 @@ socket.on('update', function (rounds) {
 
   $('#teams #red').css('width', redPercent + '%')
   $('#teams #blue').css('width', bluePercent + '%')
-
-  console.log(rounds);
 });
 
 $(document).ready(function () {
@@ -40,6 +40,8 @@ $(document).ready(function () {
     $('#background').find('canvas').remove();
 
     socket.emit('reset');
+
+    $(this).hide();
   });
 
   $('#teams .team').on('click', function (event) {
