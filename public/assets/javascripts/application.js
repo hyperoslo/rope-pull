@@ -1,4 +1,9 @@
-var socket = io();
+var socket   = io();
+var confetti = undefined;
+
+$(document).ready(function () {
+  confetti = new confetti.Context('background');
+});
 
 socket.on('win', function (color, score) {
   console.log(color + " wins!");
@@ -12,12 +17,7 @@ socket.on('win', function (color, score) {
   $('.reset').show();
   $('#background h1').addClass('animate');
 
-  confetti = new confetti.Context('background');
   confetti.start();
-
-  $(window).resize(function(){
-    confetti.resize();
-  });
 });
 
 socket.on('update', function (rounds) {
